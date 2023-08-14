@@ -103,6 +103,8 @@ body {
   font-size: 2em;
   font-weight: bold;
   line-height: 34px;
+
+  cursor: pointer;
 }
 
 .square:nth-child(2){
@@ -164,4 +166,18 @@ body {
   color: white;
   cursor: pointer;
 
+}
+.winner{
+  background-color: #85E6C5;
+}
+.sortButton{
+  padding: 5px;
+  background-color: crimson;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
