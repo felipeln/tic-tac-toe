@@ -64,14 +64,16 @@ body {
   text-align: center;
 }
 .game-container{
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 
 }
 .game{
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
 }
 .game-board{
   width: 100%;
@@ -140,6 +142,9 @@ body {
   background-color: #333;
   padding: 0 20px;
   border-radius: 8px;
+
+  max-width: 350px;
+  width: 100%;
 }
 .game-info h2{
   font-size: 24px;

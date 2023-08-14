@@ -59,6 +59,7 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares); // retorna um array [ com o vencedor "X/O" e um array com Numero das posiçoes vencedoras]
   let status;
   let linesWinner = [];
+  const squaresCheck = squares
   if (winner) {
     status = "Winner: " + winner[0]; // winner[0]
     linesWinner = winner[1];
@@ -66,8 +67,11 @@ function Board({ xIsNext, squares, onPlay }) {
   if (!winner) {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
+  if(!squaresCheck.includes(null) && !winner){
+    status = "It is a Draw!";
+  }
 
-  // console.log(linesWinner);
+  console.log(linesWinner);
 
   // using loop to make squares
   const rowGroups = [];
@@ -155,6 +159,8 @@ function Game() {
   // baseado no historico
   const moves = history.map((squares, move) => {
     let desc;
+    console.log(squares);
+
     if (move > 0) {
       desc = `Go to move #${move}`;
     }
@@ -169,8 +175,11 @@ function Game() {
     );
   });
 
-  // TODO: Add a toggle button that lets you sort the moves in either ascending or descending order.
-
+  // mudando a ordem dos li em gameHistory
+  const [order, setOrder] = useState(true)
+  function changeOrder(currentOrder){
+    setOrder(!currentOrder)
+  }   
 
   return (
     <>
@@ -187,10 +196,10 @@ function Game() {
         </div>
         <div className="game-info">
           <h2>Game history</h2>
-          <button  className="sortButton" aria-label="Sort by Order">
-            {`Sort Order`}
+          <button  className="sortButton" onClick={() => changeOrder(order)} aria-label="Sort by Order">
+            {order ? `Sort Order ⮝` : `Sort Order ⮟`}
           </button>
-          <ol>{moves}</ol>
+          <ol className="moves-list" >{order ? moves : moves.reverse()}</ol>
         </div>
       </div>
     </>
